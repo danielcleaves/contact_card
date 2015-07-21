@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>The Codingdojo Contact Page</title>
+		<link rel = "stylesheet" type = "text/css" href = "stylesheet.css">
+		<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+		<script>
+		$(document).ready(function() {
+
+		$("form").submit(function() {
+			var firstname = $('#fname').val();
+			var lastname = $('#lname').val();
+			var description = $('#description').val();
+
+		$('#card').append("<div class ='front'><h2 description = '"+description+"'>"+firstname + (" ") +  lastname+'</h2> <h5> Click here for Description</h5></div>');
+			$('.front').css('border', '2px solid black');
+			$('input:text').val('');
+			return false;
+
+						
+		});
+			$(document).on('click', '.front', function() {
+			var x = $(this).children("h2").attr("description");	
+			var y = $(this).children("h2").html();
+			$(this).children("h2").html(x);
+			$(this).children("h2").attr('description',y);
+			$(this).children("h5").toggle();
+		});
+		});
+
+		</script>
+
+
+	</head>
+	<body>
+		<div id = "wrapper">
+			<form id = 'contact'>
+				<h1>First name:</h1> <input type = "text" name ="firstname" id ="fname">
+				<h1>Last Name:</h1> <input type = "text" name="lastname" id ='lname'>
+				<h1>Description:</h1> <input type = "text" name = "description" id ="description">
+				<input type = "submit" value = "Add User">
+			</form>
+			<div id = "card">	
+			<div id = "back">	
+			</div>	
+		</div>
+	</body>
+</html>
